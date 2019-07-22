@@ -2,11 +2,9 @@ import re
 import requests
 
 from bs4 import BeautifulSoup
-from flask import Flask, request, abort
-app = Flask(__name__)
+from flask import abort, jsonify
 
-@app.route("/")
-def search():
+def search(request):
     """Responds to any HTTP request.
     Args:
         request (flask.Request): HTTP request object.
@@ -42,21 +40,31 @@ def search():
         # find title
         title = item.h3.a['title']
 
-        # find video id
+        # parse video id
         source_id = ""
         pattern = re.compile(r'.*v=(?P<source_id>.*)')
-        print(item.h3.a['href'])
         match = pattern.match(item.h3.a['href'])
         if match:
             source_id = match.group("source_id")
 
-        # find thumbnail
+        # parse thumbnail
         thumbnail = ""
         thumbnail_element = tb_item.select('img')
         if thumbnail_element[0].has_attr("data-thumb"):
             thumbnail = thumbnail_element[0]["data-thumb"]
         elif  thumbnail_element[0].has_attr("src"):
             thumbnail = thumbnail_element[0]["src"]
+        # elimiate unncessary part
+        pattern = re.compile(r'(?P<url>.*)\.jpg.*')
+        match = pattern.match(thumbnail)
+        if match:
+            thumbnail = match.group("url") + ".jpg"
+
+        # TBD meta elements
+        # we don't need now, so comment it
+        # temp_list_element = item.select('div div.yt-lockup-meta ul li')
+        # print('Date:  ' + temp_list_element[0].text)
+        # print('View:  ' + temp_list_element[1].text)
 
         # check result
         if source_id == "" or thumbnail == "" or title == "":
@@ -69,7 +77,4 @@ def search():
         )
         data.append(video)
 
-    return dict(data=data)
-
-if __name__ == "__main__":
-        app.run()
+    return jsonify(data)
