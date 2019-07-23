@@ -1,11 +1,15 @@
 # YouTube Search Results Crawler
 
+[![Docker Stars](https://img.shields.io/docker/stars/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
+[![Docker Automated](https://img.shields.io/docker/automated/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
+
 Simple service for search results from YouTube
 
 # Usage
-
+ 
 ### Run with Docker
-
+ 
 ```
 $ docker pull guessi/youtube-search-crawler:latest
 $ docker run -d -p 5000:5000 guessi/youtube-search-crawler:latest
@@ -13,7 +17,7 @@ $ curl http://localhost:5000\?q\=Adele%20Hello
 ```
 
 ### Developer Build
-
+ 
 Setup Requirements
 
 ```
@@ -53,5 +57,5 @@ $ curl http://localhost:5000\?q\=Adele%20Hello | jq '.'
 ```
 
 ## License
-
+ 
 [MIT](LICENSE)
