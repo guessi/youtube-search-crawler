@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import re
 import requests
 
@@ -16,6 +18,7 @@ def parse_source_id(href_str):
 
 
 def parse_thumbnail(thumbnail_element):
+    thumbnail = ""
     if thumbnail_element[0].has_attr("data-thumb"):
         thumbnail = thumbnail_element[0]["data-thumb"]
     elif thumbnail_element[0].has_attr("src"):

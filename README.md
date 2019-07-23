@@ -10,7 +10,7 @@ Setup Requirements
 $ pip3 install -r requirements.txt
 ```
 
-Start a flask service with youtube search
+Start a flask service with YouTube search
 
 ```
 $ ./main.py
@@ -26,7 +26,7 @@ $ ./main.py
 
 Usage
 ```
-$ curl http://localhost:5000\?q\=Adele | jq
+$ curl http://localhost:5000\?q\=Adele%20Hello | jq '.'
 
 $ {
   "data": [
