@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import abort, jsonify
 
+
 def parse_source_id(href_str):
     source_id = ""
     pattern = re.compile(r'.*v=(?P<source_id>.*)')
@@ -13,10 +14,11 @@ def parse_source_id(href_str):
 
     return source_id
 
+
 def parse_thumbnail(thumbnail_element):
     if thumbnail_element[0].has_attr("data-thumb"):
         thumbnail = thumbnail_element[0]["data-thumb"]
-    elif  thumbnail_element[0].has_attr("src"):
+    elif thumbnail_element[0].has_attr("src"):
         thumbnail = thumbnail_element[0]["src"]
     # elimiate unncessary part
     pattern = re.compile(r'(?P<url>.*)\.jpg.*')
@@ -25,6 +27,7 @@ def parse_thumbnail(thumbnail_element):
         thumbnail = match.group("url") + ".jpg"
 
     return thumbnail
+
 
 def search(request):
     """Responds to any HTTP request.
@@ -81,4 +84,4 @@ def search(request):
         )
         data.append(video)
 
-    return jsonify(data)
+    return jsonify(dict(data=data))
