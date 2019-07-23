@@ -26,7 +26,7 @@ $ ./main.py
 
 Usage
 ```
-$ curl http://localhost:5000\?q\=五月天 | jq
+$ curl http://localhost:5000\?q\=Adele | jq
 
 $ {
   "data": [
