@@ -1,9 +1,5 @@
 # YouTube Search Results Crawler
 
-[![Docker Stars](https://img.shields.io/docker/stars/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
-[![Docker Automated](https://img.shields.io/docker/automated/guessi/youtube-search-crawler.svg)](https://hub.docker.com/r/guessi/youtube-search-crawler/)
-
 Simple service for search results from YouTube
 
 # Usage
