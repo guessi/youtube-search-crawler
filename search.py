@@ -32,13 +32,13 @@ def search(request):
     soup = BeautifulSoup(searched.text, 'html.parser')
     time.sleep(random.random())
 
-    token = 'window\["ytInitialData"\] ='  # noqa
+    token = 'var ytInitialData ='  # noqa
     search_results_raw = soup.find(
         'script',
         string=re.compile(token)
     ).string.strip()
 
-    ytInitialData = search_results_raw.split(';')[0][len(token)-1:]
+    ytInitialData = search_results_raw.split(';')[0][len(token)+1:]
     ytInitialData_json = json.loads(ytInitialData)
 
     items = ytInitialData_json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents']  # noqa
