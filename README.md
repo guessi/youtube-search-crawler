@@ -2,18 +2,8 @@
 
 Simple service for search results from YouTube
 
-# Usage
- 
-### Run with Docker
- 
-```
-$ docker pull guessi/youtube-search-crawler:latest
-$ docker run -d -p 5000:5000 guessi/youtube-search-crawler:latest
-$ curl http://localhost:5000\?q\=Adele%20Hello
-```
-
 ### Developer Build
- 
+
 Setup Requirements
 
 ```
