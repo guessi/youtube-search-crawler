@@ -11,20 +11,13 @@ from bs4 import BeautifulSoup
 from flask import abort, jsonify
 
 
-def search(request):
-    q = ""
-    request_json = request.get_json()
-    if request.args and 'q' in request.args:
-        q = request.args.get('q')
-    elif request_json and 'q' in request_json:
-        q = request_json['q']
-
-    if len(q) <= 0:
-        abort(400)
+def search(query):
+    if len(query) <= 0:
+        return jsonify(dict(data=[])), 400
 
     sp = 'EgIQAQ%253D%253D'  # search preference(sp): video
     endpoint = 'https://www.youtube.com/results'
-    uri = endpoint + '?sp=' + sp + '&search_query=' + q
+    uri = endpoint + '?sp=' + sp + '&search_query=' + query
 
     random.seed(time.time())
 

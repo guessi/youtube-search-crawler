@@ -28,7 +28,7 @@ $ python3 ./main.py
 Search Locally
 
 ```
-$ curl http://localhost:5000\?q\=Adele%20Hello | jq '.'
+$ curl "http://127.0.0.1:8080?q=Adele%20Hello" | jq '.'
 
 {
   "data": [
